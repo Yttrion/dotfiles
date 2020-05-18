@@ -1,0 +1,26 @@
+alias i3conf="vim $HOME/.config/i3/config"
+alias polyconf="vim $HOME/.config/polybar/config"
+source /usr/share/nvm/init-nvm.sh
+
+# PS1 Setup
+PROMPT_COMMAND=__prompt_command
+
+__prompt_command() {
+    local EXITCODE="$?"
+
+    local HOSTCOLOR="5"
+    local USERCOLOR="3"
+    local PATHCOLOR="4"
+
+    PS1="\e[3${HOSTCOLOR}m \h  \e[3${PATHCOLOR}m \w  \n";
+
+    if [ $EXITCODE == 0 ]; then
+        PS1+="\e[32m\$ \e[0m";
+    else
+        PS1+="\e[31m\$ \e[0m";
+    fi
+}
+
+#cat ~/.cache/wal/sequences &
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
