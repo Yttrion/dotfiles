@@ -1,0 +1,93 @@
+Xft.dpi:       96
+Xft.antialias: true
+Xft.rgba:      rgb
+
+
+
+!URxvt.internalBorder: 5
+URxvt.transparent:   false
+URxvt*buffered: true
+URxvt*cursorBlink: true
+URxvt*underlineColor: yellow
+URxvt*font:	  xft:Hasklug Nerd Font:style=Regular:size=10:antialias=true
+!URxvt*font:	xft:Inconsolata Nerd Font:style=Regular:size=12:antialias=true
+URxvt*borderless: 1
+URxvt*scrollBar: false
+URxvt*saveLines: 5000
+URxvt.perl-ext-common: default,matcher
+URxvt.urlLauncher: firefox
+URxvt.matcher.button: 1
+URxvt.keysym.Shift-Control-V: eval:paste_clipboard
+URxvt.keysym.Shift-Control-C: eval:selection_to_clipboard
+
+
+
+
+
+
+
+! Enable the extended coloring options
+rofi.color-enabled: true
+!                  bg       border   separator
+rofi.color-window: #282828, #a89984, #a89984
+!                  bg       fg       bg-alt   hl-bg    hl-fg
+rofi.color-normal: #282828, #ebdbb2, #32302f, #665c54, #fbf1c7
+rofi.color-active: #d79921, #282828, #d79921, #fabd2f, #282828
+rofi.color-urgent: #cc241d, #282828, #cc241d, #fb4934, #282828
+
+rofi.separator-style: solid
+rofi.sidebar-mode: true
+rofi.bw: 1
+rofi.columns: 1
+rofi.padding: 16
+
+rofi.yoffset: 0
+rofi.fake-transparency: true
+rofi.location: 0
+rofi.width: 50
+rofi.font: Iosevka 12
+rofi.lines: 15
+rofi.fixed-num-lines: true
+
+
+
+
+
+
+*background:            #1C1F26
+*foreground:            #F4F8FA
+*cursorColor:           #F4F8FA
+*pointerColorBackground:S_base01
+*pointerColorForeground:S_base1
+
+!! black dark/light
+*color0:                #1B1D24
+*color8:                #3B4350
+
+!! red dark/light
+*color1:                #7F5330
+*color9:                #B67F48
+
+!! green dark/light
+*color2:                #B5A1A1
+*color10:               #D0B6AF
+
+!! yellow dark/light
+*color3:                #A6A9B6
+*color11:               #BBBDC1
+
+!! blue dark/light
+*color4:                #66748F
+*color12:               #7F879B
+
+!! magenta dark/light
+*color5:                #413940
+*color13:               #8E8587
+
+!! cyan dark/light
+*color6:                #66748F
+*color14:               #7F879B
+
+!! white dark/light
+*color7:                #F5F8FA
+*color15:               #FAFDFE

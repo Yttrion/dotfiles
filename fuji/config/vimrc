@@ -1,0 +1,150 @@
+"          _                    
+"   _   __(_)___ ___  __________
+"  | | / / / __ `__ \/ ___/ ___/
+"  | |/ / / / / / / / /  / /__  
+"  |___/_/_/ /_/ /_/_/   \___/  
+
+
+"vim-plug
+call plug#begin('~/.vim/plugged')
+
+"colorscheme
+Plug 'morhetz/gruvbox'
+
+"programing
+Plug 'lervag/vimtex'
+Plug 'neoclide/coc.nvim', {'branch':'release'}
+
+
+"gui
+Plug 'scrooloose/nerdtree'
+Plug 'majutsushi/tagbar'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+Plug 'ryanoasis/vim-devicons'
+Plug 'xuhdev/vim-latex-live-preview'
+Plug 'vimlab/split-term.vim'
+
+
+call plug#end()
+
+
+
+
+"###############
+"#    TOC      #
+"###############
+" 1. General
+" 2. Globals
+" 3. Shortcuts
+" 4. Advanced
+" 5. Misc
+" 6. Commands
+
+
+"###############
+"#   GENERAL   #
+"###############
+
+syntax on
+filetype plugin indent on
+
+set wildmenu
+set smartindent
+set autoindent
+set autoread
+set splitright
+set splitbelow
+set noswapfile
+set noexpandtab
+set showmode
+set hlsearch
+set nu rnu
+
+
+
+set guioptions+=m
+set background=dark
+set mouse=a
+set laststatus=2
+set statusline+=%#warningmsg#
+set statusline+=%*
+set encoding=utf-8
+set tabstop=4
+set shiftwidth=4
+set backspace=indent,eol,start
+set timeoutlen=250
+
+
+
+"###############
+"#   GLOBALS   #
+"###############
+
+let mapleader="<"
+let NERDTreeShowHidden=1
+let g:airline#extensions#tabline#enabled = 1
+let g:livepreview_previewer = 'mupdf'
+let g:airline_powerline_fonts = 1
+let g:airline_theme='ayu_mirage'
+let g:NERDTreeWinSize=20
+let g:gruvbox_contrast_dark='hard'
+
+
+let NERDTreeIgnore=[
+	\ '.git$[[dir]]',
+	\ '.vscode$[[dir]]',
+	\ '.swp$[[dir]]'
+\ ]
+
+
+"if has('termguicolors')
+"	set termguicolors
+"endif
+
+
+colorscheme gruvbox
+
+
+"###############
+"#  SHORTCUTS  #
+"###############
+
+nmap <F8> :TagbarToggle<CR>
+
+map <C-n> :NERDTree<CR>
+map <C-t> :terminal++rows=10<CR>
+map <S-v> :vsp<CR>
+map <S-h> :sp<CR>
+map <C-l> :LLPStartPreview<CR>
+map <silent><leader>h :wincmd h<CR>
+map <silent><leader>l :wincmd l<CR>
+map <silent><leader>j :wincmd j<CR>
+map <silent><leader>k :wincmd k<CR>
+map <S-n> :NERDTreeFind<CR>
+
+"###############
+"#   ADVANCED  #
+"###############
+
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~ '\s'
+endfunction
+
+inoremap <silent><expr> <Tab>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<Tab>" :
+      \ coc#refresh()
+inoremap <silent><expr> <C-space> coc#refresh()
+
+"No NERDTree alone
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+"###############
+"#  COMMANDS   #
+"###############
+
