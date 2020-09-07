@@ -1,0 +1,3 @@
+#!/bin/sh
+
+kill $(ps -fA | grep hidebar | awk '{print $2}') && python3 /home/scandion/.config/polybar/hidebar

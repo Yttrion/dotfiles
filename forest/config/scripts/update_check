@@ -1,0 +1,9 @@
+#!/bin/sh
+sleep 7
+
+if checkupdates arg; then 
+    COUNT=$(checkupdates | wc -l)
+    notify-send "Update(s) available" $COUNT
+else
+    notify-send "No updates available"
+fi

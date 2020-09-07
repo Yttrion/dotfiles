@@ -1,0 +1,9 @@
+#!/bin/sh
+
+killall krunner
+killall kded5
+killall kactivitymanagerd
+killall kglobalaccel5
+killall klauncher
+killall kdeinit5
+

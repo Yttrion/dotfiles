@@ -1,0 +1,69 @@
+# If you come from bash you might have to change your $PATH.
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
+
+# Path to your oh-my-zsh installation.
+
+
+# ZSH / OH-MY-ZSH config
+export ZSH="/home/scandion/.oh-my-zsh"
+
+ZSH_THEME="powerlevel10k/powerlevel10k"
+# powerlevel10k,
+
+# Uncomment the following line to enable command auto-correction.
+ENABLE_CORRECTION="true"
+
+# Uncomment the following line to display red dots whilst waiting for completion.
+COMPLETION_WAITING_DOTS="true"
+
+plugins=(git node)
+source $ZSH/oh-my-zsh.sh
+
+# EXPORTS / PATH
+export EDITOR=vim
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH:$HOME/.config/appimages:$PATH"
+#:$HOME/.rvm/bin"
+
+
+# ALIASES
+
+#Misc
+alias df='df -h'
+alias ls='lsd'
+alias neo="$HOME/.scripts/panes && neofetch --off"
+alias rf="rm -rf"
+alias ghc="ghc -dynamic"
+alias vim="nvim"
+alias top="vtop --theme brew"
+alias yt="youtube-dl -x -f bestaudio"
+alias gotostage="cd $HOME/Documents/I2/Stage/Maynooth/"
+alias meteo="curl -s wttr.in"
+alias nmap_search="$HOME/.scripts/nmap_search"
+
+#Config
+alias i3conf="vim $HOME/.config/i3/config"
+alias polyconf="vim $HOME/.config/polybar/config"
+
+
+#Apps
+alias dfortress="$HOME/.config/dflnp/startlnp"
+alias burpsuitepro="$HOME/.config/crack/burp.sh"
+alias msfconsole="msfconsole --quiet -x \"db_connect scandion@msf\""
+alias lite="$HOME/Documents/lite/lite"
+
+#Scripts
+alias jvm="$HOME/.scripts/java_version_manager"
+alias syswatch="$HOME/.scripts/syswatch"
+alias rmshit="python3 $HOME/.scripts/rmshit.py"
+alias scrcpy="$HOME/.scripts/scrcpy"
+alias killshit="$HOME/.scripts/killshit"
+alias audiosplit="$HOME/.scripts/audiosplit"
+alias tag="$HOME/.scripts/tag"
+alias opus2mp3="$HOME/.scripts/opus2mp3"
+alias macho="$HOME/.scripts/macho"
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+#export PATH="$PATH:$HOME/.rvm/bin"

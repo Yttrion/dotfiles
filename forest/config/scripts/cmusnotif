@@ -1,0 +1,2 @@
+#! /bin/sh
+cmus_notify --title "Now Playing" --body "$(printf "{title} by {artist}\n{duration}")" "$*" &

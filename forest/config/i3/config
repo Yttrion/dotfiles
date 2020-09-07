@@ -1,0 +1,131 @@
+#  _____        __            _ _   
+# |  __ \      / _|          | | |  
+# | |  | | ___| |_ __ _ _   _| | |_ 
+# | |  | |/ _ \  _/ _` | | | | | __|
+# | |__| |  __/ || (_| | |_| | | |_ 
+# |_____/ \___|_| \__,_|\__,_|_|\__|
+                                   
+set $mod Mod4
+font pango:Roboto light 8
+floating_modifier $mod
+
+
+bindsym $mod+h           				focus left
+bindsym $mod+j           				focus down
+bindsym $mod+k            				focus up
+bindsym $mod+l 	          				focus right
+bindsym $mod+Left           			focus left
+bindsym $mod+Down           			focus down
+bindsym $mod+Up             			focus up
+bindsym $mod+Right          			focus right
+
+bindsym $mod+Shift+Left     			move left
+bindsym $mod+Shift+Down     			move down
+bindsym $mod+Shift+Up       			move up
+bindsym $mod+Shift+Right    			move right
+
+bindsym $mod+Shift+h					split h
+bindsym $mod+Shift+v    				split v
+bindsym $mod+Shift+f        			fullscreen toggle
+bindsym $mod+Shift+space    			floating toggle
+
+bindsym $mod+ampersand 					workspace number $ws1
+bindsym $mod+eacute 					workspace number $ws2
+bindsym $mod+quotedbl 					workspace number $ws3
+bindsym $mod+apostrophe 				workspace number $ws4
+bindsym $mod+parenleft 					workspace number $ws5
+bindsym $mod+minus 		    			workspace number $ws6
+bindsym $mod+egrave 					workspace number $ws7
+bindsym $mod+underscore 				workspace number $ws8
+bindsym $mod+ccedilla 					workspace number $ws9
+bindsym $mod+agrave 					workspace number $ws10
+bindsym $mod+Shift+r 					mode "resize"
+
+bindsym $mod+Shift+ampersand 	    	move container to workspace number $ws1
+bindsym $mod+Shift+eacute 	        	move container to workspace number $ws2
+bindsym $mod+Shift+quotedbl 	    	move container to workspace number $ws3
+bindsym $mod+Shift+apostrophe       	move container to workspace number $ws4
+bindsym $mod+Shift+5 		        	move container to workspace number $ws5
+bindsym $mod+Shift+minus 	        	move container to workspace number $ws6
+bindsym $mod+Shift+egrave 	        	move container to workspace number $ws7
+bindsym $mod+Shift+underscore 	    	move container to workspace number $ws8
+bindsym $mod+Shift+ccedilla 	   		move container to workspace number $ws9
+bindsym $mod+Shift+agrave 	        	move container to workspace number $ws10
+
+
+bindsym XF86AudioRaiseVolume 			exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym XF86AudioLowerVolume 			exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% 
+bindsym XF86AudioMute 					exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle 	
+bindsym XF86AudioMicMute 				exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
+bindsym XF86MonBrightnessUp 			exec light -A 5 
+bindsym XF86MonBrightnessDown 			exec light -U 5
+
+
+
+mode "resize" {
+	bindsym j 	resize shrink 	height 10 px or 10 ppt 
+	bindsym k 	resize grow 	height 10 px or 10 ppt
+	bindsym h 	resize grow 	width 10 px or 10 ppt 
+	bindsym l 	resize shrink 	width 10 px or 10 ppt
+
+	bindsym Return mode "default"
+	bindsym Escape mode "default"
+	bindsym $mod+Shift+r mode "default"
+}
+
+
+set $notify notify-send "Screenshot done"
+bindsym $mod+d 							exec rofi -show drun -theme ~/.config/rofi/launchpad.rasi
+bindsym $mod+Shift+d					exec rofi -show run  -theme ~/.config/rofi/launchpad.rasi
+bindsym $mod+Shift+e 					exec ~/.config/rofi/scripts/powermenu.sh
+bindsym Print 							exec scrot $HOME/Images/Screenshot_%Y%m%d_%T_scrot.png && $notify;
+bindsym --release $mod+Shift+s 			exec scrot -s $HOME/Images/Screenshot_%Y%m%d_%T_scrot.png && $notify;
+bindsym $mod+Print 						exec scrot -u $HOME/Images/Screenshot_%Y%m%d_%T_scrot.png && $notify;
+bindsym $mod+x 							exec betterlockscreen -l dimblur  -t "root@localhost"
+bindsym $mod+f 							exec firefox
+bindsym $mod+c 							exec chromium
+bindsym $mod+t 							exec tor-browser
+bindsym $mod+Return 					exec urxvt
+bindsym $mod+Shift+k 					exec konsole
+bindsym $mod+Shift+a		 			kill
+bindsym $mod+Shift+c 					reload
+bindsym $mod+r 							restart
+
+   
+set $ws1 "1:一"
+set $ws2 "2:二"
+set $ws3 "3:三"
+set $ws4 "4:四"
+set $ws5 "5:五"
+set $ws6 "6:六"
+set $ws7 "7:七"
+set $ws8 "8:八"
+set $ws9 "9:九"
+set $ws10 "10:十"
+
+for_window [class="^.*"] border pixel 0 
+for_window [title="^.*"] border pixel 0
+
+gaps inner 10
+gaps outer 5
+
+border_radius 5 
+
+set_from_resource $fg i3wm.color7
+set_from_resource $bg i3wm.color2
+
+#class						border	backgr	text	indicator	child_border
+client.focused				$bg		$bg		$fg		$bg			$bg
+client.focused_inactive		$bg		$bg		$fg		$bg			$bg
+client.unfocused			$bg		$bg		$fg		$bg			$bg
+client.urgent				$bg		$bg		$fg		$bg			$bg
+client.placeholder			$bg		$bg		$fg		$bg			$bg
+client.background			$bg
+
+
+exec 					 	wal -R && xrdb -load $HOME/.Xresources
+exec                        /home/scandion/.scripts/update_check 
+exec_always					--no-startup-id compton --config /home/scandion/.config/compton/compton.conf 
+exec_always 				--no-startup-id dunst
+exec_always                 /home/scandion/.scripts/autohide
+#exec_always                 --no-startup-id /home/scandion/.config/polybar/launch.sh
